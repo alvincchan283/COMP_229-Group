@@ -1,0 +1,47 @@
+<header class="height">
+  <nav class="navbar navbar-light bg-light">
+    <ul class="nav">
+      <div class="triangle">
+        <div>
+          <a class="nav-link active logoLink" routerLink="/"></a>
+        </div>
+        <div class="circle"></div>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/about">About Me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/contact">Contact Me</a>
+      </li>
+      <!--If the user does not login-->
+      <li class="nav-item" *ngIf="!auth">
+        <a class="nav-link active" routerLink="/signup">Signup</a>
+      </li>
+      <li class="nav-item" *ngIf="!auth">
+        <a class="nav-link active" routerLink="/login">Login</a>
+      </li>
+      <!--If the user logged in-->
+      <li class="nav-item" *ngIf="auth">
+        <a class="nav-link active" routerLink="/business-contact-list">Business Contact List </a>
+      </li>
+    </ul>
+    <ul class="nav align-items-center">
+      <li class="nav-item" *ngIf="auth">
+        <h5 style="
+        margin-bottom: 0px;">{{username}}</h5>
+      </li>
+      <li class="nav-item" *ngIf="auth">
+        <button class="btn btn-outline-danger mx-4" (click)="onLogout()">Logout</button>
+      </li>
+    </ul>
+  </nav>
+</header>

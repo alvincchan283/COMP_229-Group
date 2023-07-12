@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="text-center mt-5">
+    <h1>GET IN TOUCH</h1>
+    <p>Phone: +1(647)843-3948</p>
+    <p>Email: wsze@my.centennialcollege.ca</p>
+    <p>Address: 941 Progress Ave, Scarborough, ON M1G 3T8</p>
+  </div>
+  <div class="container mt-5 contact-container">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="row g-3 contact-row m-auto align-items-center justify-content-center">
+      <div class="col-md-6 d-flex flex-column justify-content-between" style="height: 200px;">
+        <input type="text" name="firstname" class="form-control form-control-lg " placeholder="First Name" ngModel #firstname="ngModel" required>
+        <span class="text-danger" *ngIf="!firstname.valid && firstname.touched">Enter valid First Name</span>
+
+        <input type="text" name="lastname" class="form-control form-control-lg " placeholder="Last Name" ngModel #lastName="ngModel" required>
+        <span class="text-danger" *ngIf="!lastName.valid && lastName.touched">Enter valid Last Name </span>
+
+        <input type="email" name="email" class="form-control form-control-lg " placeholder="Email" ngModel email #email="ngModel" required>
+        <span class="text-danger" *ngIf="!email.valid && email.touched">Enter valid email </span>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <textarea name="textarea" ngModel class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px" required ngModel #textarea="ngModel"></textarea>
+          <label for="floatingTextarea">Comments</label>
+          <span class="text-danger" *ngIf="!textarea.valid && textarea.touched">Enter valid text </span>
+        </div>
+      </div>
+      <div class="mt-5 text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="text-center ">
+    <h1>Create Business Contact</h1>
+  </div>
+  <div class="container mt-5 contact-container">
+    <form #f="ngForm" (ngSubmit)="onCreate()" class="row g-3 contact-row m-auto align-items-center justify-content-center">
+      <div class="col-md-6 d-flex flex-column justify-content-between" style="height: 200px;">
+        <input type="text" name="contactName" class="form-control form-control-lg " placeholder="Contact Name" ngModel #contactName="ngModel" required>
+        <span class="text-danger" *ngIf="!contactName.valid && contactName.touched">Enter valid Contact Name</span>
+
+        <input type="number" name="contactNumber" class="form-control form-control-lg " placeholder="Contact Number" ngModel #contactNumber="ngModel" required>
+        <span class="text-danger" *ngIf="!contactNumber.valid && contactNumber.touched">Enter valid Contact Number </span>
+        <input type="email" name="email" class="form-control form-control-lg " placeholder="Email" ngModel email #email="ngModel" required>
+        <span class="text-danger" *ngIf="!email.valid && email.touched">Enter valid email </span>
+      </div>
+      <div class="mt-5 text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

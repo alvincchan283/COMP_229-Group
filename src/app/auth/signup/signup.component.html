@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="text-center ">
+    <h1>Sign Up</h1>
+  </div>
+  <div class="container mt-5 contact-container">
+    <form #f="ngForm" (ngSubmit)="onSignUp()" class="row g-3 contact-row m-auto align-items-center justify-content-center">
+      <div class="col-md-6 d-flex flex-column justify-content-between" style="height: 200px;">
+        <input type="text" name="username" class="form-control form-control-lg " placeholder="User Name" ngModel #username="ngModel" required>
+        <span class="text-danger" *ngIf="!username.valid && username.touched">Enter valid User Name</span>
+        <input type="password" name="password" class="form-control form-control-lg " placeholder="Password" ngModel #password="ngModel" required>
+        <span class="text-danger" *ngIf="!password.valid && password.touched">Enter valid Password </span>
+        <input type="email" name="email" class="form-control form-control-lg " placeholder="Email" ngModel email #email="ngModel" required>
+        <span class="text-danger" *ngIf="!email.valid && email.touched">Enter valid email </span>
+      </div>
+      <div class="mt-5 text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
