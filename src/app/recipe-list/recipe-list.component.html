@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <h2>recipes</h2>
+      </div>
+    </div>
+    <div class="row my-2" *ngFor="let recipe of recipes">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Recipe Name: {{recipe.name}}</h5>
+            <p class="card-text">Description: {{recipe.desc}}</p>
+            <p class="card-text">Img: {{recipe.img}}</p>
+            <button class="btn btn-primary me-2"><a class="text-decoration-none text-light" [routerLink]="['/edit-recipe', recipe._id]">Update</a></button>
+            <button class="btn btn-danger" (click)="onDelete(recipe._id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="mb-2 btn btn-outline-dark" routerLink="/create-recipe" aria-current="page">Create New Business recipe</a>
+  </div>
+</div>

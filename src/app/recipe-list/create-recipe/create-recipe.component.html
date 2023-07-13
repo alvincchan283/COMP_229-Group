@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="text-center ">
+    <h1>Create Recipe</h1>
+  </div>
+  <div class="container mt-5 contact-container">
+    <form #f="ngForm" (ngSubmit)="onCreate()" class="row g-3 contact-row m-auto align-items-center justify-content-center">
+      <div class="col-md-6 d-flex flex-column justify-content-between" style="height: 200px;">
+        <input type="text" name="recipeName" class="form-control form-control-lg " placeholder="Recipe Name" ngModel #recipeName="ngModel" required>
+        <span class="text-danger" *ngIf="!recipeName.valid && recipeName.touched">Enter valid Recipe Name</span>
+        <input type="text" name="recipeDesc" class="form-control form-control-lg " placeholder="Recipe Desc" ngModel #recipeDesc="ngModel" required>
+        <span class="text-danger" *ngIf="!recipeDesc.valid && recipeDesc.touched">Enter valid Recipe Desc </span>
+        <input type="text" name="img" class="form-control form-control-lg " placeholder="img" ngModel #img="ngModel" required>
+        <span class="text-danger" *ngIf="!img.valid && img.touched">Enter valid img </span>
+      </div>
+      <div class="mt-5 text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

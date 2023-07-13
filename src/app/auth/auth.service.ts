@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, firstValueFrom } from 'rxjs';
 import { User } from '../user.model';
 import { AuthData } from './auth-data.model';
 import { Router } from '@angular/router';
@@ -33,30 +33,25 @@ export class AuthService {
   }
 
   //Login function
-  login(username: string, password: string) {
+  async login(username: string, password: string) {
     const authData: AuthData = { username: username, password: password };
-    this.httpClient.post<{ token: string }>('/api/login', authData).subscribe({
-      next: (res) => {
-        const token = res.token;
-        this.token = res.token;
-        if (token) {
-          this.isAuth = true;
-          this.authStatus.next(true);
-          this.usernameStatus.next(username);
-          this.router.navigate(['/business-contact-list']);
-        }
-      },
-      //Incorrect username or password redirect back to the Login View
-      error: (error) => {
-        let currentUrl = this.router.url;
-        //Spcifically for the redirected back to the Login View
-        this.router
-          .navigateByUrl('/', { skipLocationChange: true })
-          .then(() => {
-            this.router.navigate([currentUrl]);
-          });
-      },
-    });
+    try {
+      const res = await firstValueFrom(
+        this.httpClient.post<{ token: string }>('/api/login', authData)
+      );
+      const token = res.token;
+      this.token = res.token;
+      if (token) {
+        this.isAuth = true;
+        this.authStatus.next(true);
+        this.usernameStatus.next(username);
+        this.router.navigate(['/']);
+      }
+    } catch (error) {
+      let currentUrl = this.router.url;
+      await this.router.navigateByUrl('/', { skipLocationChange: true });
+      this.router.navigate([currentUrl]);
+    }
   }
 
   logOut() {

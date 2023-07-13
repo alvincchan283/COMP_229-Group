@@ -1,17 +1,16 @@
 const express = require("express");
-
 const bodyParse = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 
 const userRouter = require("./routes/user");
-const businessContactRouter = require("./routes/businessContact");
+const recipeRouter = require("./routes/recipe");
 
 mongoose
   .connect(
     process.env.MONGODB_URI ||
-      "mongodb+srv://winco1125:JdrSJ0hNhtHp1i3e@cluster0.dmsaq4j.mongodb.net/",
+      "mongodb+srv://winco1125:smRNsYM5AhYDMlVj@cluster0.dmsaq4j.mongodb.net/",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -26,10 +25,10 @@ mongoose
 
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: true }));
-app.use(express.static("./dist/COMP229_Assignment2"));
+app.use(express.static("./dist/Comp229-group-project"));
 app.use(cors());
 app.use("/api", userRouter);
-app.use("/api/business", businessContactRouter);
+app.use("/api/recipe", recipeRouter);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -46,7 +45,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/*", (req, res) =>
-  res.sendFile("index.html", { root: "dist/COMP229_Assignment2/" })
+  res.sendFile("index.html", { root: "dist/Comp229-group-project/" })
 );
 
 module.exports = app;

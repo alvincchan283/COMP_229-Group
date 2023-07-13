@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "COMP229_Assignment2": {
+    "Comp229-group-project": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/COMP229_Assignment2",
+            "outputPath": "dist/Comp229-group-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -56,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "COMP229_Assignment2:build:production"
+              "browserTarget": "Comp229-group-project:build:production"
             },
             "development": {
-              "browserTarget": "COMP229_Assignment2:build:development"
+              "browserTarget": "Comp229-group-project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "COMP229_Assignment2:build"
+            "browserTarget": "Comp229-group-project:build"
           }
         },
         "test": {
