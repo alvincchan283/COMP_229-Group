@@ -30,7 +30,7 @@ export class EditRecipeComponent implements OnInit {
     this.route.paramMap.subscribe((paraMap: ParamMap) => {
       if (paraMap.has('id')) {
         this.id = paraMap.get('id') as string;
-        this.recipeService.getRecipeById(this.id).subscribe((recipe) => {
+        this.recipeService.getRecipeById(this.id).then((recipe) => {
           this.recipe = {
             _id: recipe._id,
             name: recipe.name,

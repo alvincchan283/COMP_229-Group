@@ -2,18 +2,24 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col">
-        <h2>recipes</h2>
+        <h2>Recipes</h2>
       </div>
     </div>
     <div class="row my-2" *ngFor="let recipe of recipes">
       <div class="col">
         <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Recipe Name: {{recipe.name}}</h5>
-            <p class="card-text">Description: {{recipe.desc}}</p>
-            <p class="card-text">Img: {{recipe.img}}</p>
-            <button class="btn btn-primary me-2"><a class="text-decoration-none text-light" [routerLink]="['/edit-recipe', recipe._id]">Update</a></button>
-            <button class="btn btn-danger" (click)="onDelete(recipe._id)">Delete</button>
+          <div class="row g-0">
+            <div class="col-5 col-sm-4">
+              <img src="{{recipe.img}}" class="img-fluid w-100" alt="card-horizontal-image">
+            </div>
+            <div class="col-7 col-sm-8">
+              <div class="card-body">
+                <h5 class="card-title">{{recipe.name}}</h5>
+                <p class="card-text" style="white-space: pre-line;">{{recipe.desc}}</p>
+                <button class="btn btn-primary me-2"><a class="text-decoration-none text-light" [routerLink]="['/edit-recipe', recipe._id]">Update</a></button>
+                <button class="btn btn-danger" (click)="onDelete(recipe._id)">Delete</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -4,12 +4,12 @@
   </div>
   <div class="container mt-5 contact-container">
     <form #f="ngForm" (ngSubmit)="onUpdate()" class="row g-3 contact-row m-auto align-items-center justify-content-center">
-      <div class="col-md-6 d-flex flex-column justify-content-between" style="height: 200px;">
+      <div class="col-md-6 d-flex flex-column justify-content-between">
         <input type="text" name="recipeName" class="form-control form-control-lg " placeholder="Recipe Name" ngModel #recipeName="ngModel" [ngModel]="recipe.name" required>
         <span class="text-danger" *ngIf="!recipeName.valid && recipeName.touched">Enter valid Recipe Name</span>
-        <input type="text" name="recipeDesc" class="form-control form-control-lg " placeholder="Recipe Desc" ngModel #recipeDesc="ngModel" [ngModel]="recipe.desc" required>
+        <textarea class="form-control form-control-lg my-3" name="recipeDesc" placeholder="Recipe Description" ngModel #recipeDesc="ngModel" [ngModel]="recipe.desc" required style="height: 200px"></textarea>
         <span class="text-danger" *ngIf="!recipeDesc.valid && recipeDesc.touched">Enter valid Recipe Desc </span>
-        <input type="text" name="img" class="form-control form-control-lg " placeholder="img" ngModel #img="ngModel" [ngModel]="recipe.img" required>
+        <input type="url" name="img" class="form-control form-control-lg " placeholder="https://image.jpg" ngModel #img="ngModel" [ngModel]="recipe.img" required>
         <span class="text-danger" *ngIf="!img.valid && img.touched">Enter valid img </span>
       </div>
       <div class="mt-5 text-center">

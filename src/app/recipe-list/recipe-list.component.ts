@@ -22,7 +22,7 @@ export class RecipeListComponent implements OnInit {
     //Display all contacts from database
     this.recipeService
       .getRecipe()
-      .subscribe((data: { message: string; recipes: Recipe[] }) => {
+      .then((data: { message: string; recipes: Recipe[] }) => {
         this.recipes = data.recipes;
       });
     //Update contact list when new contact is created or deleted

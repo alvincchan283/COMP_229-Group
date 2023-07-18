@@ -14,25 +14,24 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  getRecipe(): Observable<{
+  async getRecipe(): Promise<{
     message: string;
     recipes: Recipe[];
   }> {
-    return (
-      this.httpClient
-        .get<{
+    try {
+      const recipeData = await firstValueFrom(
+        this.httpClient.get<{
           message: string;
           recipes: Recipe[];
         }>('/api/recipe/recipe-list')
-        //change data to sorted list
-        .pipe(
-          map((recipeData: { message: string; recipes: Recipe[] }) => {
-            recipeData.recipes.sort((a, b) => a.name.localeCompare(b.name));
-            this.recipes = recipeData.recipes;
-            return recipeData;
-          })
-        )
-    );
+      );
+      recipeData.recipes.sort((a, b) => a.name.localeCompare(b.name));
+      this.recipes = recipeData.recipes;
+      return recipeData;
+    } catch (error) {
+      console.error('Error getting recipes:', error);
+      throw error;
+    }
   }
 
   //buiness Recipe list
@@ -46,18 +45,26 @@ export class RecipeService {
   }
 
   //edit Recipe
-  getRecipeById(id: string): Observable<{
+  async getRecipeById(id: string): Promise<{
     _id: string;
     name: string;
     desc: string;
     img: string;
   }> {
-    return this.httpClient.get<{
-      _id: string;
-      name: string;
-      desc: string;
-      img: string;
-    }>('/api/recipe/recipe-list/' + id);
+    try {
+      const response = await firstValueFrom(
+        this.httpClient.get<{
+          _id: string;
+          name: string;
+          desc: string;
+          img: string;
+        }>('/api/recipe/recipe-list/' + id)
+      );
+      return response;
+    } catch (error) {
+      console.error('Error getting recipe by id:', error);
+      throw error;
+    }
   }
 
   //edit Recipe
