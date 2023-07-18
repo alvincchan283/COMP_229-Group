@@ -19,13 +19,13 @@ export class RecipeListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //Display all contacts from database
+    //Display all recipe from database
     this.recipeService
       .getRecipe()
       .then((data: { message: string; recipes: Recipe[] }) => {
         this.recipes = data.recipes;
       });
-    //Update contact list when new contact is created or deleted
+    //Update recipe when new recipe is created or deleted
     this.recipeSubscription = this.recipeService
       .getRecipeListener()
       .subscribe((data) => {

@@ -79,6 +79,7 @@ export class RecipeService {
       await firstValueFrom(
         this.httpClient.put('/api/recipe/recipe-list/' + id, recipe)
       );
+      this.recipeUpdated.next(this.recipes);
       this.router.navigate(['/']);
     } catch (error) {
       console.error(error);
