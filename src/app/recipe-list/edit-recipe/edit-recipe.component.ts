@@ -27,6 +27,7 @@ export class EditRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //Get recipe id from url
     this.route.paramMap.subscribe((paraMap: ParamMap) => {
       if (paraMap.has('id')) {
         this.id = paraMap.get('id') as string;
@@ -42,6 +43,7 @@ export class EditRecipeComponent implements OnInit {
     });
   }
 
+  //Update recipe function
   onUpdate() {
     this.recipeService.updateRecipe(
       this.recipe._id,
@@ -52,11 +54,13 @@ export class EditRecipeComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  //Delete recipe function
   onDelete() {
     this.recipeService.deleteRecipe(this.recipe._id);
     this.router.navigate(['/']);
   }
 
+  //Cancel function
   onCancel() {
     this.router.navigate(['/']);
   }

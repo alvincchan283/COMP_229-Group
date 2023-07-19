@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 
+//Routes
 const userRouter = require("./routes/user");
 const recipeRouter = require("./routes/recipe");
 
+//Connect to MongoDB
 mongoose
   .connect(
     process.env.MONGODB_URI ||

@@ -16,6 +16,7 @@ export class NavComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    //Check login status
     this.authStatus = this.authService
       .getAuthStatus()
       .subscribe((authStatus) => {
@@ -26,10 +27,12 @@ export class NavComponent implements OnInit, OnDestroy {
       });
   }
 
+  //Unsubscribe
   ngOnDestroy(): void {
     this.authStatus.unsubscribe();
   }
 
+  //Logout function
   onLogout() {
     this.authService.logOut();
   }
