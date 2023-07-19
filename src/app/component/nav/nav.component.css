@@ -1,5 +1,6 @@
 img {
   height: 50px;
-  width: 50px;
+  width: auto;
+  object-fit: contain;
   margin-left: 1rem;
 }
