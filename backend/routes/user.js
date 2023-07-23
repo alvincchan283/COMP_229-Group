@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+
+const JWT_KEY = process.env.JWT_KEY ?? crypto.randomBytes(128).toString('hex');
 
 router.post("/register", (req, res, next) => {
   const user = new User({
@@ -30,7 +34,11 @@ router.post("/login", (req, res, next) => {
           message: "User not found!",
         });
       }
-      res.status(200).json({ token: "successfully login" });
+      res.status(200).json({ 
+        token: jwt.sign({
+          username: user.username, _id: user._id
+        }, JWT_KEY)
+      });
     })
     .catch((err) => {
       return res.status(404).json({
