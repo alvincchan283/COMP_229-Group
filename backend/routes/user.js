@@ -4,7 +4,7 @@ const User = require("../models/user");
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
-const JWT_KEY = process.env.JWT_KEY ?? crypto.randomBytes(128).toString('hex');
+process.env.JWT_KEY = process.env.JWT_KEY ?? crypto.randomBytes(128).toString('hex');
 
 router.post("/register", (req, res, next) => {
   const user = new User({
@@ -37,7 +37,7 @@ router.post("/login", (req, res, next) => {
       res.status(200).json({ 
         token: jwt.sign({
           username: user.username, _id: user._id
-        }, JWT_KEY)
+        }, process.env.JWT_KEY)
       });
     })
     .catch((err) => {
