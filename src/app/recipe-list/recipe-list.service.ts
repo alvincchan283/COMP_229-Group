@@ -86,6 +86,7 @@ export class RecipeService {
     }
   }
 
+  //delete Recipe
   deleteRecipe(id: string) {
     this.httpClient.delete('/api/recipe/recipe-list/' + id).subscribe((res) => {
       const updatereceipe = this.recipes.filter((recipes) => recipes._id != id);

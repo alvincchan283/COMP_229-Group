@@ -6,9 +6,11 @@ const cors = require("cors");
 const path = require('path');
 
 require('dotenv').config({ path: path.join(__dirname, '.env') });
+//Routes
 const userRouter = require("./routes/user");
 const recipeRouter = require("./routes/recipe");
 
+//Connect to MongoDB
 mongoose
   .connect(
     process.env.MONGODB_URI ||

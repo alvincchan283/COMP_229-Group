@@ -6,6 +6,7 @@ const crypto = require('crypto');
 
 process.env.JWT_KEY = process.env.JWT_KEY ?? crypto.randomBytes(128).toString('hex');
 
+//User register
 router.post("/register", (req, res, next) => {
   const user = new User({
     username: req.body.username,
@@ -26,6 +27,7 @@ router.post("/register", (req, res, next) => {
     });
 });
 
+//User login
 router.post("/login", (req, res, next) => {
   User.findOne({ username: req.body.username, password: req.body.password })
     .then((user) => {

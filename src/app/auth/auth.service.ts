@@ -17,18 +17,22 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
+  //Make authStatus Observable
   getAuthStatus() {
     return this.authStatus.asObservable();
   }
 
+  //Make usernameStatus Observable
   getUsernameStatus() {
     return this.usernameStatus.asObservable();
   }
 
+  //Get Auth
   getAuth() {
     return this.isAuth;
   }
 
+  //Signup function
   signupUser(user: User): Observable<User> {
     return this.httpClient.post<User>('/api/register', user);
   }
@@ -55,6 +59,7 @@ export class AuthService {
     }
   }
 
+  //Logout function
   logOut() {
     this.token = '';
     this.authStatus.next(false);
