@@ -14,14 +14,15 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  //canActivate: [AuthGuard] is used to protect the route
   {
     path: 'create-recipe',
     component: CreateRecipeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-recipe/:id',
     component: EditRecipeComponent,
+    canActivate: [AuthGuard]
   },
 ];
 

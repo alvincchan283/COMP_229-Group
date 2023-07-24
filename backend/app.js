@@ -3,7 +3,9 @@ const bodyParse = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
+const path = require('path');
 
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 //Routes
 const userRouter = require("./routes/user");
 const recipeRouter = require("./routes/recipe");
