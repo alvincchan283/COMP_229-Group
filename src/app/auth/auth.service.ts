@@ -42,7 +42,7 @@ export class AuthService {
     const authData: AuthData = { username: username, password: password };
     try {
       const res = await firstValueFrom(
-        this.httpClient.post<{ token: string }>(`${environment.backend_url}/api/login`, authData)
+        this.httpClient.post<{ token: string }>(`/api/login`, authData)
       );
       const token = res.token;
       this.token = res.token;
