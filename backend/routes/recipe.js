@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Recipe = require("../models/recipe");
-const authMiddleware = require('../middleware/auth.middleware');
+const authMiddleware = require("../middleware/auth.middleware");
 
 //Recipe create
 router.post("/create-list", authMiddleware, (req, res, next) => {
@@ -47,27 +47,36 @@ router.get("/recipe-list/:id", (req, res, next) => {
 
 //Update single Recipe
 router.put("/recipe-list/:id", authMiddleware, (req, res, next) => {
-  const { name, desc, img } = req.body;
-  Recipe.updateOne({ _id: req.params.id }, { name, desc, img }).then((result) => {
-    res.status(200).json({
-      result,
-    });
-  }).catch(err => {
-    console.error(err);
-    res.status(404).json({ message: 'The recipe could not be found.' });
+  const recipe = new Recipe({
+    _id: req.body._id,
+    name: req.body.name,
+    desc: req.body.desc,
+    img: req.body.img,
   });
+  Recipe.updateOne({ _id: req.params.id }, recipe)
+    .then((result) => {
+      res.status(200).json({
+        result,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).json({ message: "The recipe could not be found." });
+    });
 });
 
 //Delete single Recipe
 router.delete("/recipe-list/:id", authMiddleware, (req, res, next) => {
-  Recipe.deleteOne({ _id: req.params.id }).then((result) => {
-    res.status(200).json({
-      message: "recipe deleted",
+  Recipe.deleteOne({ _id: req.params.id })
+    .then((result) => {
+      res.status(200).json({
+        message: "recipe deleted",
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).json({ message: "The recipe could not be found." });
     });
-  }).catch(err => {
-    console.error(err);
-    res.status(404).json({ message: 'The recipe could not be found.' });
-  });
 });
 
 module.exports = router;

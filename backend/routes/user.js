@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
-process.env.JWT_KEY = process.env.JWT_KEY ?? crypto.randomBytes(128).toString('hex');
+process.env.JWT_KEY =
+  process.env.JWT_KEY ?? crypto.randomBytes(128).toString("hex");
 
 //User register
 router.post("/register", (req, res, next) => {
@@ -36,11 +37,15 @@ router.post("/login", (req, res, next) => {
           message: "User not found!",
         });
       }
-      res.status(200).json({ 
-        token: jwt.sign({
-          username: user.username, _id: user._id
-        }, process.env.JWT_KEY)
-      });
+
+      const token = jwt.sign(
+        {
+          username: user.username,
+          _id: user._id,
+        },
+        process.env.JWT_KEY
+      );
+      res.status(200).json({ token: token });
     })
     .catch((err) => {
       return res.status(404).json({
