@@ -3,6 +3,7 @@ import { Recipe } from './recipe.model';
 import { HttpClient } from '@angular/common/http';
 import { RecipeService } from './recipe-list.service';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,10 +13,12 @@ import { Observable, Subscription } from 'rxjs';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
   recipeSubscription: Subscription = new Subscription();
+  authStatus: Subscription = new Subscription();
+  auth: boolean = false;
 
   constructor(
     private recipeService: RecipeService,
-    private httpClient: HttpClient
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +34,12 @@ export class RecipeListComponent implements OnInit {
       .subscribe((data) => {
         this.recipes = data;
       });
+    this.auth = this.authService.getAuth();
+    this.authStatus = this.authService
+      .getAuthStatus()
+      .subscribe((authStatus) => {
+        this.auth = authStatus;
+      });
   }
 
   onDelete(id: string) {
@@ -39,5 +48,6 @@ export class RecipeListComponent implements OnInit {
 
   ngOnDestroy() {
     this.recipeSubscription.unsubscribe();
+    this.authStatus.unsubscribe();
   }
 }

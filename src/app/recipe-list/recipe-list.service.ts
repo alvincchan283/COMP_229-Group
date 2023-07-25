@@ -44,7 +44,7 @@ export class RecipeService {
     return this.httpClient.post<Recipe>('/api/recipe/create-list', recipe);
   }
 
-  //edit Recipe
+  //Get Recipe
   async getRecipeById(id: string): Promise<{
     _id: string;
     name: string;
@@ -79,6 +79,7 @@ export class RecipeService {
       await firstValueFrom(
         this.httpClient.put('/api/recipe/recipe-list/' + id, recipe)
       );
+      await this.getRecipe();
       this.recipeUpdated.next(this.recipes);
       this.router.navigate(['/']);
     } catch (error) {

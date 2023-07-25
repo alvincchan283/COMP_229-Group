@@ -4,3 +4,8 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
+.card-footer {
+  background-color: white;
+  border-top: none;
+}
