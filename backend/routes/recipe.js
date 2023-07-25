@@ -47,13 +47,8 @@ router.get("/recipe-list/:id", (req, res, next) => {
 
 //Update single Recipe
 router.put("/recipe-list/:id", authMiddleware, (req, res, next) => {
-  const recipe = new Recipe({
-    _id: req.body._id,
-    name: req.body.name,
-    desc: req.body.desc,
-    img: req.body.img,
-  });
-  Recipe.updateOne({ _id: req.params.id }, recipe)
+  const { name, desc, img } = req.body;
+  Recipe.updateOne({ _id: req.params.id }, { name, desc, img })
     .then((result) => {
       res.status(200).json({
         result,
