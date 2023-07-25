@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, firstValueFrom } from 'rxjs';
 import { User } from '../user.model';
 import { AuthData } from './auth-data.model';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private token: string = '';
-  private isAuth = false;
+  private isAuth: boolean = false;
   private authStatus = new Subject<boolean>();
   private usernameStatus = new Subject<string>();
 
@@ -32,6 +31,9 @@ export class AuthService {
     return this.isAuth;
   }
 
+  getToken() {
+    return this.token;
+  }
   //Signup function
   signupUser(user: User): Observable<User> {
     return this.httpClient.post<User>('/api/register', user);

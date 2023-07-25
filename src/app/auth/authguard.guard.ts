@@ -25,9 +25,8 @@ export class AuthGuard {
     const isAuth = this.authService.getAuth();
     if (!isAuth) {
       this.router.navigate(['/login']);
-      return false;
     }
 
-    return true;
+    return isAuth;
   }
 }
