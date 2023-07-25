@@ -8,6 +8,7 @@ import { CreateRecipeComponent } from './recipe-list/create-recipe/create-recipe
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './auth/authguard.guard';
 import { EditRecipeComponent } from './recipe-list/edit-recipe/edit-recipe.component';
+import { RecipeDetailComponent } from './recipe-list/recipe-detail/recipe-detail.component';
 
 //Set route
 const appRoutes: Routes = [
@@ -17,12 +18,17 @@ const appRoutes: Routes = [
   {
     path: 'create-recipe',
     component: CreateRecipeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-recipe/:id',
     component: EditRecipeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'detail-recipe/:id',
+    component: RecipeDetailComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
