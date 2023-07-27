@@ -15,7 +15,13 @@ export class RecipeDetailComponent {
     name: '',
     desc: '',
     img: '',
+    date: new Date(),
+    ingredients: '',
+    tips: '',
   };
+
+  convertDate: string = '';
+
   constructor(
     private recipeService: RecipeService,
     private route: ActivatedRoute,
@@ -32,6 +38,9 @@ export class RecipeDetailComponent {
             name: recipe.name,
             desc: recipe.desc,
             img: recipe.img,
+            date: new Date(recipe.date),
+            ingredients: recipe.ingredients,
+            tips: recipe.tips,
           };
         });
       }

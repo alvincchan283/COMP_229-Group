@@ -9,6 +9,10 @@
         <span class="text-danger" *ngIf="!recipeName.valid && recipeName.touched">Enter valid Recipe Name</span>
         <textarea class="form-control form-control-lg my-3" name="recipeDesc" placeholder="Recipe Description" ngModel #recipeDesc="ngModel" required style="height: 100px"></textarea>
         <span class="text-danger" *ngIf="!recipeDesc.valid && recipeDesc.touched">Enter valid Recipe Desc </span>
+        <textarea class="form-control form-control-lg my-3" name="ingredients" placeholder="Ingredients" ngModel #ingredients="ngModel" required style="height: 100px"></textarea>
+        <span class="text-danger" *ngIf="!ingredients.valid && ingredients.touched">Enter valid ingredients </span>
+        <textarea class="form-control form-control-lg my-3" name="tips" placeholder="Tips" ngModel #tips="ngModel" required style="height: 100px"></textarea>
+        <span class="text-danger" *ngIf="!tips.valid && tips.touched">Enter valid tips </span>
         <input type="url" name="img" class="form-control form-control-lg " placeholder="https://image.jpg" ngModel #img="ngModel" required>
         <span class="text-danger" *ngIf="!img.valid && img.touched">Enter valid img </span>
       </div>

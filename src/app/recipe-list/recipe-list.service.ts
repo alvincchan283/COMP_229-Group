@@ -50,6 +50,9 @@ export class RecipeService {
     name: string;
     desc: string;
     img: string;
+    date: Date;
+    ingredients: string;
+    tips: string;
   }> {
     try {
       const response = await firstValueFrom(
@@ -58,6 +61,9 @@ export class RecipeService {
           name: string;
           desc: string;
           img: string;
+          date: Date;
+          ingredients: string;
+          tips: string;
         }>('/api/recipe/recipe-list/' + id)
       );
       return response;
@@ -68,12 +74,23 @@ export class RecipeService {
   }
 
   //edit Recipe
-  async updateRecipe(id: string, name: string, desc: string, img: string) {
+  async updateRecipe(
+    id: string,
+    name: string,
+    desc: string,
+    img: string,
+    date: Date,
+    ingredients: string,
+    tips: string
+  ) {
     const recipe: Recipe = {
       _id: id,
       name: name,
       desc: desc,
       img: img,
+      date: date,
+      ingredients: ingredients,
+      tips: tips,
     };
     try {
       await firstValueFrom(

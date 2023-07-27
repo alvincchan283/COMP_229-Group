@@ -9,6 +9,9 @@ router.post("/create-list", authMiddleware, (req, res, next) => {
     name: req.body.name,
     desc: req.body.desc,
     img: req.body.img,
+    date: req.body.date,
+    ingredients: req.body.ingredients,
+    tips: req.body.tips,
   });
   recipe
     .save()
@@ -47,8 +50,11 @@ router.get("/recipe-list/:id", (req, res, next) => {
 
 //Update single Recipe
 router.put("/recipe-list/:id", authMiddleware, (req, res, next) => {
-  const { name, desc, img } = req.body;
-  Recipe.updateOne({ _id: req.params.id }, { name, desc, img })
+  const { name, desc, img, ingredients, tips } = req.body;
+  Recipe.updateOne(
+    { _id: req.params.id },
+    { name, desc, img, ingredients, tips }
+  )
     .then((result) => {
       res.status(200).json({
         result,

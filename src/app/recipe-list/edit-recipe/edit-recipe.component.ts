@@ -18,6 +18,9 @@ export class EditRecipeComponent implements OnInit {
     name: '',
     desc: '',
     img: '',
+    date: new Date(),
+    ingredients: '',
+    tips: '',
   };
 
   constructor(
@@ -37,6 +40,9 @@ export class EditRecipeComponent implements OnInit {
             name: recipe.name,
             desc: recipe.desc,
             img: recipe.img,
+            date: new Date(recipe.date),
+            ingredients: recipe.ingredients,
+            tips: recipe.tips,
           };
         });
       }
@@ -49,9 +55,14 @@ export class EditRecipeComponent implements OnInit {
       this.recipe._id,
       this.signupForm?.value.recipeName,
       this.signupForm?.value.recipeDesc,
-      this.signupForm?.value.img
+      this.signupForm?.value.img,
+      new Date(),
+      this.signupForm?.value.ingredients,
+      this.signupForm?.value.tips
     );
     this.router.navigate(['/']);
+    console.log(this.signupForm?.value.ingredients);
+    console.log(this.signupForm?.value.tips);
   }
 
   //Delete recipe function

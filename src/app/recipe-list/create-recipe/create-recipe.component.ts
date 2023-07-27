@@ -25,10 +25,16 @@ export class CreateRecipeComponent {
         name: this.signupForm?.value.recipeName,
         desc: this.signupForm?.value.recipeDesc,
         img: this.signupForm?.value.img,
+        date: new Date(),
+        ingredients: this.signupForm?.value.ingredients,
+        tips: this.signupForm?.value.tips,
       };
+      console.log(recipe.ingredients);
+      console.log(recipe.tips);
       const response = await lastValueFrom(
         this.recipeService.createRecipe(recipe)
       );
+
       this.router.navigate(['/']);
       console.log('created:', response);
     } catch (error) {
