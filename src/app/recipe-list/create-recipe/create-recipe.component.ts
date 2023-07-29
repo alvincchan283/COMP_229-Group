@@ -10,7 +10,7 @@ import { Recipe } from '../recipe.model';
 @Component({
   selector: 'app-create-recipe',
   templateUrl: './create-recipe.component.html',
-  styleUrls: ['./create-recipe.component.css'],
+  styleUrls: ['./create-recipe.component.scss'],
 })
 export class CreateRecipeComponent {
   @ViewChild('f') signupForm: NgForm | undefined;
