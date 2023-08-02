@@ -8,7 +8,7 @@ import { RecipeService } from '../recipe-list.service';
 @Component({
   selector: 'app-edit-recipe',
   templateUrl: './edit-recipe.component.html',
-  styleUrls: ['./edit-recipe.component.css'],
+  styleUrls: ['./edit-recipe.component.scss'],
 })
 export class EditRecipeComponent implements OnInit {
   @ViewChild('f') signupForm: NgForm | undefined;
