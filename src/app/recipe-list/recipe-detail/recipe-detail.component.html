@@ -12,10 +12,10 @@
     </div>
     <div class="row">
       <div class="col">
-        <h5 class="mt-md-3">Updated: {{recipe.date}}</h5>
+        <h5 class="mt-md-3">Updated: {{recipe.date | date:'medium'}}</h5>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col">
         <h2>Ingredients</h2>
         <p style="white-space: pre-line;">{{recipe.ingredients}}</p>
