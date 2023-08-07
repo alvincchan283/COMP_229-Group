@@ -121,6 +121,40 @@ h1,
   padding: 7px 45px;
 }
 
+.button-3 {
+  font-size: 12px;
+  background: $gray;
+  padding: 9px 20px;
+  line-height: 1;
+  color: $black;
+}
+
+.main-form {
+  background-color: $white;
+  border-left: 9px solid $green;
+  padding: 50px 50px;
+  max-width: 483px;
+  width: 100%;
+
+  label {
+    font-size: 18px;
+    font-weight: 400;
+    color: $black;
+    display: flex;
+    margin-bottom: 20px;
+    
+    span {
+      flex-shrink: 0;
+      width: 100px;
+    }
+
+    input {
+      width: 100%;
+      margin-left: 30px;
+    }
+  }
+}
+
 .search-bar {
   background-color: $navy;
   height: 61px;
