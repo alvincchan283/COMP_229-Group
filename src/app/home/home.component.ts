@@ -32,7 +32,7 @@ export class HomeComponent {
     if (this.authService.getAuth()) {
       // If authenticated, navigate to the /createpost route
       // TODO: check if link works
-      this.router.navigate(['/createpost']);
+      this.router.navigate(['/create-recipe']);
     } else {
       // If not authenticated, navigate to the /login route
       this.router.navigate(['/login']);
