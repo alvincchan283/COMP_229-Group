@@ -54,4 +54,56 @@ router.post("/login", (req, res, next) => {
     });
 });
 
+// Get user information
+router.get("/user", (req, res, next) => {
+  // Extract the token from the Authorization header
+  const token = req.headers.authorization?.split(" ")[1];
+
+  // Verify and decode the token
+  jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
+    if (err) return res.status(403).json({ message: "Invalid token" });
+
+    // Find the user by ID
+    User.findById(decoded._id)
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({ message: "User not found!" });
+        }
+
+        // Respond with the user's username and email
+        res.status(200).json({
+          username: user.username,
+          email: user.email,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  });
+});
+
+// Update user information
+router.put("/user", (req, res, next) => {
+  // Extract the token from the Authorization header
+  const token = req.headers.authorization?.split(" ")[1];
+
+  // Verify and decode the token
+  jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
+    if (err) return res.status(403).json({ message: "Invalid token" });
+
+    // Find and update the user by ID
+    User.findByIdAndUpdate(decoded._id, {
+      username: req.body.username,
+      password: req.body.password, // Consider hashing the password
+      email: req.body.email,
+    })
+      .then(() => {
+        res.status(200).json({ message: "User updated successfully!" });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  });
+});
+
 module.exports = router;
