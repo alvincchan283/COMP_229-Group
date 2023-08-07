@@ -12,6 +12,7 @@ export class NavComponent implements OnInit, OnDestroy {
   username: string = '';
 
   private authStatus: Subscription = new Subscription();
+  private usernameStatus: Subscription = new Subscription();
 
   constructor(private authService: AuthService) {}
 
@@ -19,17 +20,16 @@ export class NavComponent implements OnInit, OnDestroy {
     //Check login status
     this.authStatus = this.authService
       .getAuthStatus()
-      .subscribe((authStatus) => {
-        this.auth = authStatus;
-        this.authService.getUsernameStatus().subscribe((username) => {
-          this.username = username;
-        });
-      });
+      .subscribe(authStatus => this.auth = authStatus);
+    this.usernameStatus = this.authService
+      .getUsernameStatus()
+      .subscribe(username => this.username = username);
   }
 
   //Unsubscribe
   ngOnDestroy(): void {
     this.authStatus.unsubscribe();
+    this.usernameStatus.unsubscribe();
   }
 
   //Logout function

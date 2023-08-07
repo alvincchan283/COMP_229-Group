@@ -48,6 +48,20 @@ router.get("/recipe-list/:id", (req, res, next) => {
   });
 });
 
+//Search for recipe using keyword
+router.get("/search", (req, res, next) => {
+  const searchQuery = {};
+  for (let key of ['name', 'ingredients', 'cuisine', 'prepareTime']) {
+    if (req.query[key]) {
+      searchQuery[key] = key === 'prepareTime' ? req.query[key] : { $regex: req.query[key], $options: 'i'};
+    }
+  }
+
+  Recipe.find(searchQuery).then(recipes => {
+    res.status(200).json(recipes);
+  })
+});
+
 //Update single Recipe
 router.put("/recipe-list/:id", authMiddleware, (req, res, next) => {
   const { name, desc, img, ingredients, tips } = req.body;

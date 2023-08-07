@@ -1,0 +1,18 @@
+<main class="container p-4 d-flex flex-column justify-content-center">
+  <div class="row mb-3">
+    <h2 class="text-center">Search Results</h2>
+  </div>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-12 col-md-6 col-lg-4 d-flex" *ngFor="let recipe of recipes">
+      <div class="card flex-fill">
+        <a [routerLink]="['/detail-recipe', recipe._id]">
+          <img src="{{recipe.img}}" class="card-img-top" style="height: 200px; object-fit: cover" alt="recipe-image">
+        </a>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{recipe.name}}</h5>
+          <p class="card-text">{{recipe.desc | truncate:200}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
 import { User } from '../user.model';
 import { AuthData } from './auth-data.model';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import jwtDecode from 'jwt-decode';
+
+interface JwtToken {
+  iat: number;
+  username: string;
+  _id: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +19,19 @@ import { Router } from '@angular/router';
 export class AuthService {
   private token: string = '';
   private isAuth: boolean = false;
-  private authStatus = new Subject<boolean>();
-  private usernameStatus = new Subject<string>();
+  private authStatus = new BehaviorSubject<boolean>(false);
+  private usernameStatus = new BehaviorSubject<string>('');
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) {
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      const tokenContent: JwtToken = jwtDecode(token);
+      this.token = token;
+      this.isAuth = true;
+      this.authStatus.next(true);
+      this.usernameStatus.next(tokenContent.username);
+    }
+  }
 
   //Make authStatus Observable
   getAuthStatus() {
@@ -27,13 +44,9 @@ export class AuthService {
   }
 
   //Get Auth
-  getAuth() {
-    return this.isAuth;
-  }
+  getAuth() { return this.isAuth; }
+  getToken() { return this.token; }
 
-  getToken() {
-    return this.token;
-  }
   //Signup function
   signupUser(user: User): Observable<User> {
     return this.httpClient.post<User>('/api/register', user);
@@ -52,6 +65,7 @@ export class AuthService {
         this.isAuth = true;
         this.authStatus.next(true);
         this.usernameStatus.next(username);
+        localStorage.setItem('token', token);
         this.router.navigate(['/']);
       }
     } catch (error) {
@@ -63,6 +77,7 @@ export class AuthService {
 
   //Logout function
   logOut() {
+    localStorage.removeItem('token');
     this.token = '';
     this.isAuth = false;
     this.authStatus.next(false);
