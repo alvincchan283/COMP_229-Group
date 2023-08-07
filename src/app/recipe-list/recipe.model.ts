@@ -6,4 +6,7 @@ export interface Recipe {
   date: Date;
   ingredients: string;
   tips: string;
+  cuisine?: string;
+  prepareTime?: Number;
+  author?: string;
 }
