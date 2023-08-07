@@ -50,10 +50,14 @@ router.get("/recipe-list/:id", (req, res, next) => {
 
 //Search for recipe using keyword
 router.get("/search", (req, res, next) => {
-  Recipe.find({
-    name: { $regex: req.query.keyword ?? '', $options: 'i' },
-    ingredients: { $regex: req.query.ingredients ?? '', $options: 'i' }
-  }).then(recipes => {
+  const searchQuery = {};
+  for (let key of ['name', 'ingredients', 'cuisine', 'prepareTime']) {
+    if (req.query[key]) {
+      searchQuery[key] = key === 'prepareTime' ? req.query[key] : { $regex: req.query[key], $options: 'i'};
+    }
+  }
+
+  Recipe.find(searchQuery).then(recipes => {
     res.status(200).json(recipes);
   })
 });
