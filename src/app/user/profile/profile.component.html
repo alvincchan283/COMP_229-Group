@@ -1,0 +1,60 @@
+<section class="profile">
+  <div class="text-center mb-4">
+    <h1 class="black">Profile</h1>
+  </div>
+  <div class="d-flex justify-content-center">
+    <form #f="ngForm" (ngSubmit)="onUpdate()" class="main-form">
+      <label>
+        <span>Username:</span>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          placeholder="User Name"
+          [(ngModel)]="user.username"
+          required
+        />
+      </label>
+      <label>
+        <span>Email:</span>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Email"
+          [(ngModel)]="user.email"
+          email
+          required
+        />
+      </label>
+      <label>
+        <span>Update Password:</span>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Password"
+          ngModel
+          required
+        />
+      </label>
+      <label>
+        <span>Confirm Password:</span>
+        <input
+          type="password"
+          name="confirmPassword"
+          class="form-control"
+          placeholder="Confirm Password"
+          ngModel
+          required
+        />
+      </label>
+      <div class="d-flex justify-content-end align-items-end">
+        <a class="back" (click)="goBack()">Back to Home</a>
+        <button type="submit" class="button-3" [disabled]="f.invalid">
+          Update Profile
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
