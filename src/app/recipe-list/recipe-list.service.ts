@@ -88,7 +88,13 @@ export class RecipeService {
     tips: string
   ) {
     const recipe: Recipe = {
-      _id: id, name, desc, img, date, ingredients, tips
+      _id: id,
+      name,
+      desc,
+      img,
+      date,
+      ingredients,
+      tips,
     };
     try {
       await firstValueFrom(
@@ -104,7 +110,7 @@ export class RecipeService {
 
   //delete Recipe
   deleteRecipe(id: string) {
-    this.httpClient.delete(`/api/recipe/recipe-list/${id}` + id).subscribe((res) => {
+    this.httpClient.delete(`/api/recipe/recipe-list/${id}`).subscribe((res) => {
       const updatereceipe = this.recipes.filter((recipes) => recipes._id != id);
       this.recipes = updatereceipe;
       this.recipeUpdated.next([...this.recipes]);
