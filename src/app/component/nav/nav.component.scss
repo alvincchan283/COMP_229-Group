@@ -1,6 +1,33 @@
-img {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
-  margin-left: 1rem;
+@import '../../../variables.scss';
+
+header {
+  background-color: $white;
+  padding: 10px 0;
+  -webkit-box-shadow: 0px 12px 15px -3px rgba(0,0,0,0.08); 
+  box-shadow: 0px 12px 15px -3px rgba(0,0,0,0.08);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-items {
+  align-items: center;
+  display: flex;
+}
+
+.header-items {
+  margin-right: 20px;
+}
+
+.header-item {
+  font-weight: 700;
+  padding: 10px 0 10px 10px;
+  color: $orange;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $navy;
+  }
 }
