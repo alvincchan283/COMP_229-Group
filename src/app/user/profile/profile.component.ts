@@ -45,8 +45,10 @@ export class ProfileComponent implements OnInit {
       };
 
       // Assume you have a method in AuthService to update user data
-      await this.authService.updateUser(updatedUser);
+      const response = await this.authService.updateUser(updatedUser);
       alert('Profile updated successfully.');
+      console.log('updated:', response);
+      console.log('updatedUser:', updatedUser);
     } catch (error) {
       console.error('Error updating profile:', error);
     }
