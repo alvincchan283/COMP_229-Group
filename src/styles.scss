@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 /* You can add global styles to this file, and also import other style files */
 @import "variables.scss";
 p,
@@ -10,8 +12,19 @@ h3 {
   color: $black;
 }
 
+p,h5,h4,h3,h2,h1,a,li,span,div,input,textarea,button,select {
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
 section {
   max-width: 714px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+nav {
+  max-width: 1000px;
   width: 100%;
   margin: 0 auto;
 }
@@ -30,11 +43,13 @@ a {
 
 p,
 .p {
+  font-weight: 400;
   font-size: 15px;
 }
 
 h5,
 .h5 {
+  font-weight: 400;
   font-size: 16px;
 }
 

@@ -1,27 +1,16 @@
-<header class="height">
-  <nav class="navbar navbar-light bg-light mb-4">
-    <ul class="nav align-items-center">
-      <li class="nav-item">
-        <a class="nav-link active" routerLink="/">
-          <img src="../../../assets/images/Codecook.jpeg" alt="Codecook">
-        </a>
-      </li>
-      <!--If the user does not login-->
-      <li class="nav-item" *ngIf="!auth">
-        <a class="nav-link active" routerLink="/signup">Signup</a>
-      </li>
-      <li class="nav-item" *ngIf="!auth">
-        <a class="nav-link active" routerLink="/login">Login</a>
-      </li>
-    </ul>
-    <ul class="nav align-items-center" *ngIf="auth">
-      <li class="nav-item">
-        <h5 style="
-        margin-bottom: 0px;">{{username}}</h5>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-outline-danger mx-4" (click)="onLogout()">Logout</button>
-      </li>
-    </ul>
+<header>
+  <nav class="header-container">
+    <a class="" routerLink="/">
+      <img src="../../../assets/images/logo.png" alt="Codecook" />
+    </a>
+    <!--If the user does not login-->
+    <div class="header-items" *ngIf="!auth">
+      <a class="header-item" routerLink="/login">Login</a>
+      <a class="header-item" routerLink="/signup">Register</a>
+    </div>
+    <div class="header-items" *ngIf="auth">
+      <a class="header-item" routerLink="/profile">{{ username }}</a>
+      <div type="button" class="header-item" (click)="onLogout()">Logout</div>
+    </div>
   </nav>
 </header>

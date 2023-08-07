@@ -1,6 +1,30 @@
-img {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
-  margin-left: 1rem;
+@import '../../../variables.scss';
+
+header {
+  padding: 10px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-items {
+  align-items: center;
+  display: flex;
+}
+
+.header-items {
+  margin-right: 20px;
+}
+
+.header-item {
+  font-weight: 700;
+  padding: 10px 0 10px 10px;
+  color: $orange;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $navy;
+  }
 }
