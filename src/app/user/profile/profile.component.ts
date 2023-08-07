@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -43,7 +44,9 @@ export class ProfileComponent implements OnInit {
         email: this.profileForm?.value.email,
       };
 
-      const response = await this.authService.updateUser(updatedUser);
+      const response = await lastValueFrom(
+        this.authService.updateUser(updatedUser)
+      );
       alert('Profile updated successfully.');
       console.log('updated:', response);
       console.log('updatedUser:', updatedUser);
