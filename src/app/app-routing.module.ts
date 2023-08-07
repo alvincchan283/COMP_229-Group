@@ -10,12 +10,14 @@ import { AuthGuard } from './auth/authguard.guard';
 import { EditRecipeComponent } from './recipe-list/edit-recipe/edit-recipe.component';
 import { RecipeDetailComponent } from './recipe-list/recipe-detail/recipe-detail.component';
 import { SearchResultComponent } from './recipe-list/search-result/search-result.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 //Set route
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'profile', component: ProfileComponent },
   {
     path: 'create-recipe',
     component: CreateRecipeComponent,
@@ -33,8 +35,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'search-result',
-    component: SearchResultComponent
-  }
+    component: SearchResultComponent,
+  },
 ];
 
 @NgModule({

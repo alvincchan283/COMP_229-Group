@@ -44,8 +44,12 @@ export class AuthService {
   }
 
   //Get Auth
-  getAuth() { return this.isAuth; }
-  getToken() { return this.token; }
+  getAuth() {
+    return this.isAuth;
+  }
+  getToken() {
+    return this.token;
+  }
 
   //Signup function
   signupUser(user: User): Observable<User> {
@@ -82,5 +86,30 @@ export class AuthService {
     this.isAuth = false;
     this.authStatus.next(false);
     this.router.navigate(['/']);
+  }
+
+  // Fetch user data method
+  getUserData(): Observable<{ username: string; email: string }> {
+    // Include the token in the request headers
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.token,
+    });
+
+    return this.httpClient.get<{ username: string; email: string }>(
+      '/api/user',
+      { headers }
+    );
+  }
+
+  // Update user data method
+  updateUser(user: User): Observable<{ message: string }> {
+    // Include the token in the request headers
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.token,
+    });
+
+    return this.httpClient.put<{ message: string }>('/api/user', user, {
+      headers,
+    });
   }
 }

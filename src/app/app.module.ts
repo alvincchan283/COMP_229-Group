@@ -19,6 +19,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { TruncatePipe } from './truncate.pipe';
 import { RecipeDetailComponent } from './recipe-list/recipe-detail/recipe-detail.component';
 import { SearchResultComponent } from './recipe-list/search-result/search-result.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SearchResultComponent } from './recipe-list/search-result/search-result
     TruncatePipe,
     RecipeDetailComponent,
     SearchResultComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
