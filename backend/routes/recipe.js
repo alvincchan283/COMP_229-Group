@@ -48,6 +48,16 @@ router.get("/recipe-list/:id", (req, res, next) => {
   });
 });
 
+//Search for recipe using keyword
+router.get("/search", (req, res, next) => {
+  Recipe.find({
+    name: { $regex: req.query.keyword ?? '', $options: 'i' },
+    ingredients: { $regex: req.query.ingredients ?? '', $options: 'i' }
+  }).then(recipes => {
+    res.status(200).json(recipes);
+  })
+});
+
 //Update single Recipe
 router.put("/recipe-list/:id", authMiddleware, (req, res, next) => {
   const { name, desc, img, ingredients, tips } = req.body;
