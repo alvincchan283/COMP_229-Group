@@ -1,39 +1,31 @@
 <section>
-  <div class="container d-flex flex-column flex-grow-1">
-    <div class="row d-flex mb-3">
-      <div
-        class="col-md-7 d-flex flex-column align-items-center justify-content-center"
-      >
-        <h1 class="ms-4">Food Recipe</h1>
-        <p class="ms-4">Cooking your own delicious food</p>
-        <a href="#recipeList">View Recipe</a>
-      </div>
-      <div
-        class="col-md-5 d-flex flex-column align-items-center justify-content-center"
-      >
-        <img
-          src="../../assets/images/wdy050121nationalmonth-003-1621446470.jpg"
-          alt="img-fluid"
-          class="img-fluid me-1"
-        />
-      </div>
+  <div class="welcome-block mb-5">
+    <img
+      src="../../assets/images/wdy050121nationalmonth-003-1621446470.jpg"
+      alt="img-fluid"
+      class="welcome-block__img"
+    />
+    <span class="welcome-block__backdrop"></span>
+    <div class="welcome-block__text">
+      <h1 class="welcome-block__h1 mb-2">Unique Food Recipe</h1>
+      <h3 class="welcome-block__h3 mb-4">Cooking your own delicious food</h3>
+      <a class="welcome-block__a button-1" href="#recipeList">View Recipe</a>
     </div>
-    <div class="row mb-3 px-5">
-      <form #f="ngForm" (ngSubmit)="onSearch()">
-        <div class="col-12 col-md-6 input-group d-flex flex-row">
-          <span class="input-group-text flex-grow-0">Search Recipes</span>
-          <input
-            class="form-control flex-grow-1"
-            type="text"
-            placeholder="Enter keyword to search"
-            name="name"
-            id="search-name"
-            ngModel
-          />
-          <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-      </form>
-    </div>
+  </div>
+  <div class="search-bar">
+    <form #f="ngForm" (ngSubmit)="onSearch()">
+      <input
+        class=""
+        type="text"
+        placeholder="Find Your Recipes..."
+        name="name"
+        id="search-name"
+        ngModel
+      />
+      <button type="submit" class="">
+        <img class="icon" src="/assets/icons/magnify.svg" alt="share" />
+      </button>
+    </form>
   </div>
   <app-recipe-list id="recipeList"></app-recipe-list>
 </section>

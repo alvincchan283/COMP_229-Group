@@ -108,3 +108,51 @@ h1,
 .rain {
   color: $rain;
 }
+
+.button-1 {
+  background-color: $orange;
+  overflow: hidden;
+  border-radius:35px;
+  color: $white;
+  font-weight: 500;
+  font-size: 28px;
+  text-decoration: none;
+  padding: 7px 45px;
+}
+
+.search-bar {
+  background-color: $navy;
+  height: 61px;
+  width: 100%;
+  position: relative;
+  border-radius: 5px 28px 28px 28px;
+
+  form {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    height: 46px;
+    width: 46px;
+    border: none;
+    border-radius: 100%;
+    position: absolute;
+    right: 9px;
+    top: 7px;
+  }
+
+  input {
+    border: none;
+    margin-top: 8px;
+    height: 46px;
+    width: 522px;
+    background: $white;
+
+    &::placeholder {
+      font-size: 22px;
+      color: $black;
+      padding-left: 27px;
+    }
+  }
+}
