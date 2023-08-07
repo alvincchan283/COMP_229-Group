@@ -1,21 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
 import { User } from '../user.model';
 import { AuthData } from './auth-data.model';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import jwtDecode from 'jwt-decode';
+
+interface JwtToken {
+  iat: number;
+  username: string;
+  _id: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private token: string = localStorage.getItem('token') ?? '';
-  private isAuth: boolean = localStorage.getItem('token') !== null;
-  private authStatus = new Subject<boolean>();
-  private usernameStatus = new Subject<string>();
+  private token: string = '';
+  private isAuth: boolean = false;
+  private authStatus = new BehaviorSubject<boolean>(false);
+  private usernameStatus = new BehaviorSubject<string>('');
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) {
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      const tokenContent: JwtToken = jwtDecode(token);
+      this.token = token;
+      this.isAuth = true;
+      this.authStatus.next(true);
+      this.usernameStatus.next(tokenContent.username);
+    }
+  }
 
   //Make authStatus Observable
   getAuthStatus() {
@@ -28,13 +44,9 @@ export class AuthService {
   }
 
   //Get Auth
-  getAuth() {
-    return this.isAuth;
-  }
+  getAuth() { return this.isAuth; }
+  getToken() { return this.token; }
 
-  getToken() {
-    return this.token;
-  }
   //Signup function
   signupUser(user: User): Observable<User> {
     return this.httpClient.post<User>('/api/register', user);
@@ -45,7 +57,7 @@ export class AuthService {
     const authData: AuthData = { username: username, password: password };
     try {
       const res = await firstValueFrom(
-        this.httpClient.post<{ token: string }>(`${environment.backend_url}/api/login`, authData)
+        this.httpClient.post<{ token: string }>(`/api/login`, authData)
       );
       const token = res.token;
       this.token = res.token;
@@ -65,6 +77,7 @@ export class AuthService {
 
   //Logout function
   logOut() {
+    localStorage.removeItem('token');
     this.token = '';
     this.isAuth = false;
     this.authStatus.next(false);

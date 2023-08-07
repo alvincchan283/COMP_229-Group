@@ -24,7 +24,7 @@ export class RecipeService {
         this.httpClient.get<{
           message: string;
           recipes: Recipe[];
-        }>(`${environment.backend_url}/api/recipe/recipe-list`)
+        }>(`/api/recipe/recipe-list`)
       );
       recipeData.recipes.sort((a, b) => a.name.localeCompare(b.name));
       this.recipes = recipeData.recipes;
@@ -47,14 +47,14 @@ export class RecipeService {
 
   //create Recipe
   createRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.httpClient.post<Recipe>(`${environment.backend_url}/api/recipe/create-list`, recipe);
+    return this.httpClient.post<Recipe>(`/api/recipe/create-list`, recipe);
   }
 
   //Get Recipe
   async getRecipeById(id: string): Promise<Recipe> {
     try {
       const response = await firstValueFrom(
-        this.httpClient.get<Recipe>(`${environment.backend_url}/api/recipe/recipe-list/` + id)
+        this.httpClient.get<Recipe>(`/api/recipe/recipe-list/` + id)
       );
       return response;
     } catch (error) {
@@ -67,7 +67,7 @@ export class RecipeService {
   async searchRecipeByName(name: string): Promise<Recipe[]> {
     try {
       const response = await firstValueFrom(
-        this.httpClient.get<Recipe[]>(`${environment.backend_url}/api/recipe/search?name=${name}`)
+        this.httpClient.get<Recipe[]>(`/api/recipe/search?name=${name}`)
       );
       this.recipes = response;
       return response;
@@ -92,7 +92,7 @@ export class RecipeService {
     };
     try {
       await firstValueFrom(
-        this.httpClient.put(`${environment.backend_url}/api/recipe/recipe-list/${id}`, recipe)
+        this.httpClient.put(`/api/recipe/recipe-list/${id}`, recipe)
       );
       await this.getRecipe();
       this.recipeUpdated.next(this.recipes);
@@ -104,7 +104,7 @@ export class RecipeService {
 
   //delete Recipe
   deleteRecipe(id: string) {
-    this.httpClient.delete(`${environment.backend_url}/api/recipe/recipe-list/${id}` + id).subscribe((res) => {
+    this.httpClient.delete(`/api/recipe/recipe-list/${id}` + id).subscribe((res) => {
       const updatereceipe = this.recipes.filter((recipes) => recipes._id != id);
       this.recipes = updatereceipe;
       this.recipeUpdated.next([...this.recipes]);

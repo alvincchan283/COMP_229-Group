@@ -18,7 +18,6 @@ import { EditRecipeComponent } from './recipe-list/edit-recipe/edit-recipe.compo
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { TruncatePipe } from './truncate.pipe';
 import { RecipeDetailComponent } from './recipe-list/recipe-detail/recipe-detail.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SearchResultComponent } from './recipe-list/search-result/search-result.component';
 
 @NgModule({
@@ -34,7 +33,6 @@ import { SearchResultComponent } from './recipe-list/search-result/search-result
     EditRecipeComponent,
     TruncatePipe,
     RecipeDetailComponent,
-    UserProfileComponent,
     SearchResultComponent,
   ],
   imports: [
