@@ -1,84 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'variables.scss';
-p, h4, h5, h6, h1, h2, h3 {
-    color: $black;
+@import "variables.scss";
+p,
+h4,
+h5,
+h6,
+h1,
+h2,
+h3 {
+  color: $black;
 }
 
 section {
-    max-width: 714px;
-    width: 100%;
-    margin: 0 auto;
+  max-width: 714px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 body {
-    background-color: $snow;
+  background-color: $snow;
 }
 
 a {
-    color: $orange;
-    text-decoration: underline;
-    &:hover {
-        color: $navy;
-    }
+  color: $orange;
+  text-decoration: underline;
+  &:hover {
+    color: $navy;
+  }
 }
 
-p, .p {
-    font-size: 12px;
+p,
+.p {
+  font-size: 15px;
 }
 
-h5, .h5 {
-    font-size: 14px;
+h5,
+.h5 {
+  font-size: 16px;
 }
 
-h4, .h4 {
-    font-size: 17px;
+h4,
+.h4 {
+  font-size: 17px;
 }
 
-h3, .h3 {
-    font-size: 22px;
+h3,
+.h3 {
+  font-size: 22px;
 }
 
-h2, .h2 {
-    font-size: 27px;
+h2,
+.h2 {
+  font-size: 27px;
 }
 
-h1, .h1 {
-    font-size: 34px;
+h1,
+.h1 {
+  font-size: 34px;
 }
 
 .black {
-    color: $black;
+  color: $black;
 }
 
 .green {
-    color: $green;
+  color: $green;
 }
 
 .navy {
-    color: $navy;
+  color: $navy;
 }
 
 .gray {
-    color: $gray;
+  color: $gray;
 }
 
 .white {
-    color: $white;
+  color: $white;
 }
 
 .pink {
-    color: $pink;
+  color: $pink;
 }
 
 .orange {
-    color: $orange;
+  color: $orange;
 }
 
 .snow {
-    color: $snow;
+  color: $snow;
 }
 
 .rain {
-    color: $rain;
+  color: $rain;
 }
-
