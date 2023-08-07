@@ -1,0 +1,30 @@
+
+@import '../../../variables.scss';
+
+footer {
+    background-color: $green;
+}
+
+.icon {
+    margin: 10px;
+}
+
+p {
+    color: $white;
+}
+
+section {
+    padding: 70px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-left {
+    max-width: 413px;
+}
+
+.container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
