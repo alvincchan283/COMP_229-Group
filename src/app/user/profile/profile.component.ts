@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
 
   // Fetch user data (username and email)
   fetchUserData() {
-    // Assume you have a method in AuthService to fetch user data
     this.authService.getUserData().subscribe((data) => {
       this.user = data;
     });
@@ -40,11 +39,10 @@ export class ProfileComponent implements OnInit {
 
       const updatedUser = {
         username: this.profileForm?.value.username,
-        email: this.profileForm?.value.email,
         password: this.profileForm?.value.password,
+        email: this.profileForm?.value.email,
       };
 
-      // Assume you have a method in AuthService to update user data
       const response = await this.authService.updateUser(updatedUser);
       alert('Profile updated successfully.');
       console.log('updated:', response);
