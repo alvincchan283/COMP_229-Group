@@ -9,7 +9,8 @@ const recipeSchema = mongoose.Schema({
   tips: { type: String, required: true },
   cuisine: { type: String },
   prepareTime: { type: Number, default: 10 },
-  author: { type: mongoose.Schema.Types.ObjectId }
+  author: { type: mongoose.Schema.Types.ObjectId },
+  yield: { type: Number, default: 2 },
 });
 
 module.exports = mongoose.model("Recipe", recipeSchema);
