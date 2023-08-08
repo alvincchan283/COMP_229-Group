@@ -6,23 +6,30 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
-      <div class="col col-xl-3 d-flex" *ngFor="let recipe of recipes">
-        <div class="card flex-fill">
-          <a [routerLink]="['/detail-recipe', recipe._id]">
-            <img src="{{recipe.img}}" class="card-img-top" style="height: 200px; object-fit: cover" alt="recipe-image">
+      <div class="col col-xl-4 d-flex" *ngFor="let recipe of recipes">
+        <div class="r-card">
+          <a class="r-card-link" [routerLink]="['/detail-recipe', recipe._id]">
+            <img src="{{ recipe.img }}" class="r-card-img" alt="recipe-image" />
           </a>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">{{recipe.name}}</h5>
-            <p class="card-text">{{recipe.desc | truncate:100}}</p>
+          <div class="r-card-body">
+            <h5 class="r-card-title">{{ recipe.name }}</h5>
+            <p class="r-card-text">{{ recipe.desc | truncate : 100 }}</p>
 
-            <div class="card-footer mt-auto" *ngIf="auth">
-              <button class="btn btn-primary me-2"><a class="text-decoration-none text-light" [routerLink]="['/edit-recipe', recipe._id]">Update</a></button>
-              <button class="btn btn-danger" (click)="onDelete(recipe._id)">Delete</button>
+            <div class="r-card-btns" *ngIf="auth">
+              <div type="button">
+                <a
+                  class="text-decoration-none text-light"
+                  [routerLink]="['/edit-recipe', recipe._id]"
+                  ><img class="icon" src="/assets/icons/edit.svg" alt="edit"
+                /></a>
+              </div>
+              <div type="button" (click)="onDelete(recipe._id)">
+                <img class="icon" src="/assets/icons/trash.svg" alt="share" />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
