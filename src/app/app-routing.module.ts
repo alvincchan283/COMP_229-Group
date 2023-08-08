@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   {
     path: 'create-recipe',
     component: CreateRecipeComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'edit-recipe/:id',

@@ -1,24 +1,85 @@
-<div class="wrapper">
-  <div class="text-center ">
-    <h1>Create Recipe</h1>
-  </div>
+<section>
+  <h1 class="title">Create Recipe</h1>
+
   <div class="container mt-5 contact-container">
-    <form #f="ngForm" (ngSubmit)="onCreate()" class="row g-3 contact-row m-auto align-items-center justify-content-center">
+    <form
+      #f="ngForm"
+      (ngSubmit)="onCreate()"
+      class="row g-3 contact-row m-auto align-items-center justify-content-center"
+    >
       <div class="col-md-6 d-flex flex-column justify-content-between">
-        <input type="text" name="recipeName" class="form-control form-control-lg " placeholder="Recipe Name" ngModel #recipeName="ngModel" required>
-        <span class="text-danger" *ngIf="!recipeName.valid && recipeName.touched">Enter valid Recipe Name</span>
-        <textarea class="form-control form-control-lg my-3" name="recipeDesc" placeholder="Recipe Description" ngModel #recipeDesc="ngModel" required style="height: 100px"></textarea>
-        <span class="text-danger" *ngIf="!recipeDesc.valid && recipeDesc.touched">Enter valid Recipe Desc </span>
-        <textarea class="form-control form-control-lg my-3" name="ingredients" placeholder="Ingredients" ngModel #ingredients="ngModel" required style="height: 100px"></textarea>
-        <span class="text-danger" *ngIf="!ingredients.valid && ingredients.touched">Enter valid ingredients </span>
-        <textarea class="form-control form-control-lg my-3" name="tips" placeholder="Tips" ngModel #tips="ngModel" required style="height: 100px"></textarea>
-        <span class="text-danger" *ngIf="!tips.valid && tips.touched">Enter valid tips </span>
-        <input type="url" name="img" class="form-control form-control-lg " placeholder="https://image.jpg" ngModel #img="ngModel" required>
-        <span class="text-danger" *ngIf="!img.valid && img.touched">Enter valid img </span>
+        <input
+          type="text"
+          name="recipeName"
+          class="form-control form-control-lg"
+          placeholder="Recipe Name"
+          ngModel
+          #recipeName="ngModel"
+          required
+        />
+        <span
+          class="text-danger"
+          *ngIf="!recipeName.valid && recipeName.touched"
+          >Enter valid Recipe Name</span
+        >
+        <textarea
+          class="form-control form-control-lg my-3"
+          name="recipeDesc"
+          placeholder="Recipe Description"
+          ngModel
+          #recipeDesc="ngModel"
+          required
+          style="height: 100px"
+        ></textarea>
+        <span
+          class="text-danger"
+          *ngIf="!recipeDesc.valid && recipeDesc.touched"
+          >Enter valid Recipe Desc
+        </span>
+        <textarea
+          class="form-control form-control-lg my-3"
+          name="ingredients"
+          placeholder="Ingredients"
+          ngModel
+          #ingredients="ngModel"
+          required
+          style="height: 100px"
+        ></textarea>
+        <span
+          class="text-danger"
+          *ngIf="!ingredients.valid && ingredients.touched"
+          >Enter valid ingredients
+        </span>
+        <textarea
+          class="form-control form-control-lg my-3"
+          name="tips"
+          placeholder="Tips"
+          ngModel
+          #tips="ngModel"
+          required
+          style="height: 100px"
+        ></textarea>
+        <span class="text-danger" *ngIf="!tips.valid && tips.touched"
+          >Enter valid tips
+        </span>
+        <input
+          type="url"
+          name="img"
+          class="form-control form-control-lg"
+          placeholder="https://image.jpg"
+          ngModel
+          #img="ngModel"
+          required
+        />
+        <span class="text-danger" *ngIf="!img.valid && img.touched"
+          >Enter valid img
+        </span>
       </div>
       <div class="mt-5 text-center">
-        <button type="submit" class="btn btn-primary mb-4" [disabled]="f.invalid">Create</button>
+        <button type="submit" class="button-1" [disabled]="f.invalid">
+          Share Your Recipe !
+        </button>
       </div>
     </form>
   </div>
-</div>
+</section>
