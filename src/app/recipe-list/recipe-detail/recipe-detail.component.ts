@@ -18,6 +18,9 @@ export class RecipeDetailComponent {
     date: new Date(),
     ingredients: '',
     tips: '',
+    yield: '',
+    author: '',
+    prepareTime: 0,
   };
 
   convertDate: string = '';
@@ -41,6 +44,9 @@ export class RecipeDetailComponent {
             date: new Date(recipe.date),
             ingredients: recipe.ingredients,
             tips: recipe.tips,
+            yield: recipe.yield,
+            author: recipe.author,
+            prepareTime: recipe.prepareTime,
           };
         });
       }

@@ -9,4 +9,5 @@ export interface Recipe {
   cuisine?: string;
   prepareTime?: Number;
   author?: string;
+  yield?: string;
 }

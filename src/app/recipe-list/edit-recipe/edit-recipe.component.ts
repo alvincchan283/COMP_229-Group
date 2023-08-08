@@ -43,6 +43,9 @@ export class EditRecipeComponent implements OnInit {
             date: new Date(recipe.date),
             ingredients: recipe.ingredients,
             tips: recipe.tips,
+            yield: recipe.yield,
+            author: recipe.author,
+            prepareTime: recipe.prepareTime,
           };
         });
       }

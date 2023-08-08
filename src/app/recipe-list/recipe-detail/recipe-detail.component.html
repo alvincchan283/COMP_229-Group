@@ -1,32 +1,36 @@
-<div class="wrapper">
+<section>
   <div class="container">
     <div class="row">
-      <div class="col">
-        <img src="{{recipe.img}}" class="mx-auto d-block rounded-3" style="width:50%" alt="recipe-image">
+      <div class="col banner">
+        <img
+          src="{{ recipe.img }}"
+          class="mx-auto d-block rounded-3 banner__img"
+          alt="recipe-image"
+        />
       </div>
     </div>
-    <div class="row">
-      <div class="col rounded-3 bg-success mt-4">
-        <h2 class=" text-light p-3">{{recipe.name}}</h2>
-      </div>
+    <div class="title-blk">
+      <h2 class="title-blk__head">{{ recipe.name }}</h2>
+      <p class="title-blk__author">By: {{ recipe.author }}</p>
     </div>
-    <div class="row">
-      <div class="col">
-        <h5 class="mt-md-3">Updated: {{recipe.date | date:'medium'}}</h5>
-      </div>
+    <h3 class="updated">Updated: {{ recipe.date | date : "medium" }}</h3>
+    <div class="basic-info">
+      <p class="basic-info__yields">YIELDS: {{ recipe.yield }} serving(s)</p>
+      <p class="basic-info__prep">
+        PREP TIME: {{ recipe.prepareTime }} minutes
+      </p>
     </div>
     <div class="row mb-5">
       <div class="col">
         <h2>Ingredients</h2>
-        <p style="white-space: pre-line;">{{recipe.ingredients}}</p>
+        <p style="white-space: pre-line">{{ recipe.ingredients }}</p>
         <h2>Tips</h2>
-        <p style="white-space: pre-line">{{recipe.tips}}</p>
+        <p style="white-space: pre-line">{{ recipe.tips }}</p>
       </div>
       <div class="col">
         <h2>Directions</h2>
-        <p style="white-space: pre-line;">{{recipe.desc}}</p>
-
+        <p style="white-space: pre-line">{{ recipe.desc }}</p>
       </div>
     </div>
   </div>
-</div>
+</section>

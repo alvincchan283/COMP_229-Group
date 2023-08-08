@@ -1,6 +1,55 @@
-:host,
-.wrapper {
+@import '../../../variables.scss';
+
+section {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.banner {
+  margin-bottom: 40px;
+  &__img {
+    max-width: 714px;
+    width: 100%;
+  }
+}
+
+.title-blk {
+  background-color: $navy;
+  padding: 30px 65px;
+  width: 100%;
+  position: relative;
+  border-radius: 5px 28px 28px 28px;
+  margin-bottom: 30px;
+
+  &__head {
+    color: $white;
+  }
+
+  &__author {
+    color: $white;
+    font-size: 16px;
+    position: absolute;
+    bottom: 8px;
+    right: 45px;
+  }
+}
+
+.updated {
+  margin-bottom: 25px;
+}
+
+.basic-info {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  border: 4px solid $pink;
+  width: 415px;
+  padding: 20px 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  background-color: $white;
+
+  &__head {
+    margin-bottom: 13px;
+  }
 }
