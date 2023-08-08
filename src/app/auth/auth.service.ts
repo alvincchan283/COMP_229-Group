@@ -102,13 +102,13 @@ export class AuthService {
   }
 
   // Update user data method
-  updateUser(user: User): Observable<{ message: string }> {
+  updateUser(user: User): Observable<User> {
     // Include the token in the request headers
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.token,
     });
 
-    return this.httpClient.put<{ message: string }>('/api/user', user, {
+    return this.httpClient.put<User>('/api/user', user, {
       headers,
     });
   }
