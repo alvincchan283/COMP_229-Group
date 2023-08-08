@@ -1,18 +1,33 @@
-<main class="container p-4 d-flex flex-column justify-content-center">
-  <div class="row mb-3">
-    <h2 class="text-center">Search Results</h2>
+<section>
+  <div class="mb-4">
+    <h2>Result of {{ searchKeyword }}</h2>
   </div>
-  <div class="row d-flex flex-row justify-content-center align-items-center">
-    <div class="col-12 col-md-6 col-lg-4 d-flex" *ngFor="let recipe of recipes">
-      <div class="card flex-fill">
-        <a [routerLink]="['/detail-recipe', recipe._id]">
-          <img src="{{recipe.img}}" class="card-img-top" style="height: 200px; object-fit: cover" alt="recipe-image">
+  <div class="search-bar mb-4">
+    <form #f="ngForm" (ngSubmit)="onSearch()">
+      <input
+        class=""
+        type="text"
+        placeholder="Find Your Recipes..."
+        name="name"
+        id="search-name"
+        ngModel
+      />
+      <button type="submit" class="">
+        <img class="icon" src="/assets/icons/magnify.svg" alt="share" />
+      </button>
+    </form>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+    <div class="col col-xl-4 d-flex" *ngFor="let recipe of recipes">
+      <div class="r-card">
+        <a class="r-card-link" [routerLink]="['/detail-recipe', recipe._id]">
+          <img src="{{ recipe.img }}" class="r-card-img" alt="recipe-image" />
         </a>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{recipe.name}}</h5>
-          <p class="card-text">{{recipe.desc | truncate:200}}</p>
+        <div class="r-card-body">
+          <h5 class="r-card-title">{{ recipe.name }}</h5>
+          <p class="r-card-text">{{ recipe.desc | truncate : 100 }}</p>
         </div>
       </div>
     </div>
   </div>
-</main>
+</section>

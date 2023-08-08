@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class RecipeService {
   recipes: Recipe[] = [];
+  keyword: string = '';
 
   private recipeUpdated = new Subject<Recipe[]>();
 
@@ -33,6 +34,10 @@ export class RecipeService {
       console.error('Error getting recipes:', error);
       throw error;
     }
+  }
+
+  getSearchKeyword() {
+    return this.keyword;
   }
 
   //Get the recipes stored in service.
@@ -69,6 +74,8 @@ export class RecipeService {
       const response = await firstValueFrom(
         this.httpClient.get<Recipe[]>(`/api/recipe/search?name=${name}`)
       );
+      // store the search keyword in service.
+      this.keyword = name;
       this.recipes = response;
       return response;
     } catch (error) {
