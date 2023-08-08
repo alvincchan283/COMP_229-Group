@@ -9,7 +9,10 @@
       <a class="header-item" routerLink="/signup">Register</a>
     </div>
     <div class="header-items" *ngIf="auth">
-      <a class="header-item" routerLink="/profile">{{ username }}</a>
+      <a class="header-item" routerLink="/profile"
+        ><img class="icon" src="/assets/icons/profile.svg" alt="profile"
+      /></a>
+      <a class="header-item" routerLink="/create-recipe">New recipe</a>
       <div type="button" class="header-item" (click)="onLogout()">Logout</div>
     </div>
   </nav>

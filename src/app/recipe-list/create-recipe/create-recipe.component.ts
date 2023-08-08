@@ -29,8 +29,6 @@ export class CreateRecipeComponent {
         ingredients: this.signupForm?.value.ingredients,
         tips: this.signupForm?.value.tips,
       };
-      console.log(recipe.ingredients);
-      console.log(recipe.tips);
       const response = await lastValueFrom(
         this.recipeService.createRecipe(recipe)
       );
